@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- 页面meta -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+        <!-- 引入样式 -->
+        <link rel="stylesheet" href="plugins/elementui/index.css">
+        <link rel="stylesheet" href="css/login.css">
+        <script>
+            if(window.self != window.top){
+                window.top.location = window.location;
+            }
+        </script>
+    </head>
+    <body class="hold-transition skin-purple sidebar-mini">
+    <h1 style="text-align: center">欢迎注册</h1>
+        <div id="app">
+            <div class="login-container">
+                <div class="loginBox">
+                  <form method="post" class="login-form" action="/user/register" label-position="left">
+                      <div class="title-container">
+                        <div class="logoInfo clearfix">
+                          <em class="logo"></em>
+                        </div>
+                      </div>
+
+                      <div style="justify-content: space-between; display: flex; margin-bottom: 5px">
+                        <div >
+                            <span>用户名：</span>
+                        </div>
+
+                        <input type="text" name="username" placeholder="请输入用户名" />
+                      </div>
+
+                      <div style="justify-content: space-between;  display: flex; margin-bottom: 5px">
+                        <span >用户密码：</span>
+                        <input type="password" name="password" placeholder="请输入密码"/>
+                      </div>
+
+                      <div style="justify-content: space-between; display: flex" >
+                          <span >确认密码：</span>
+
+                          <input type="password" name="againPassword" placeholder="请再次输入密码"/>
+                      </div>
+
+                      <div style="display: flex; ">
+                          <span>性别：</span>
+
+                          <div style="margin-left: 50px; flex: 1">
+                              <input type="radio" name="sex" value=1 checked/>男
+                              <input type="radio" name="sex" value=1 style="margin-left: 20px"/>女
+                          </div>
+                      </div>
+
+
+                      <input type="submit" style="width:100%;margin-bottom:30px;" value="登录"></input>
+                </form>
+                </div>
+              </div>
+        </div>
+    </body>
+    <!-- 引入组件库 -->
+    <script src="js/vue.js"></script>
+    <script src="plugins/elementui/index.js"></script>
+
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data:{
+                regUser: {
+                    username: "",
+                    password: "",
+                    againPassword: "",
+                    sex: 1
+                }
+            },
+            //钩子函数，VUE对象初始化完成后自动执行
+            created() {
+                //调用分页查询方法完成分页查询
+                this.findPage();
+            },
+            methods: {
+
+
+                //编辑
+                handleEdit() {
+                    //进行表单校验
+                    this.$refs['dataEditForm'].validate((valid) => {
+                        if(valid){
+                            //如果校验通过，发送ajax请求，将表单数据提交到Controller
+                            axios.post("/checkitem/edit.do",this.formData).then((res) => {
+                                if(res.data.flag){
+                                    //处理成功
+                                    this.$message({
+                                        type:'success',
+                                        message:res.data.message
+                                    });
+                                    //关闭新增窗口
+                                    this.dialogFormVisible4Edit = false;
+                                    //分页查询
+                                    this.findPage();
+                                }else{
+                                    //处理失败
+                                    this.$message.error(res.data.message);
+                                }
+                            });
+                        }else{
+                            //校验不通过，提示错误信息
+                            this.$message.error("表单数据校验失败，请检查输入是否正确！");
+                        }
+                    });
+                },
+
+            }
+        })
+    </script>
+    <style>
+        .login-container{
+            margin:0px auto;
+            width: 270px;
+
+            background-color: aqua;
+        }
+    </style>
+</html>

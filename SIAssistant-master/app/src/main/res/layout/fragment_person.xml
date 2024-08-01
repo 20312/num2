@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="24dp"
+    >
+
+    <RelativeLayout
+        android:background="@drawable/tu_2"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_marginTop="20dp"
+            android:id="@+id/headportrait"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+        <TextView
+            android:id="@+id/name"
+            android:layout_marginLeft="20dp"
+            android:text="用户—0omkda"
+            android:layout_below="@+id/headportrait"
+            android:layout_width="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:layout_height="30dp" />
+        <Button
+            android:id="@+id/denglu"
+            android:text="登陆"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_marginTop="70dp"
+            android:textColor="@color/colorWhite"
+            android:text="注册"
+            android:id="@+id/register"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_below="@id/name"
+            android:src="@color/huiblack"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:id="@+id/pressbutton1"
+            android:background="@drawable/pressbutton"
+            android:textColor="@color/colorWhite"
+            android:layout_weight="1"
+            android:text="我的相册"
+            android:layout_width="0dp"
+            android:layout_height="50dp" />
+        <Button
+            android:background="@drawable/pressbutton"
+            android:id="@+id/pressbutton2"
+            android:text="推荐打卡"
+            android:textColor="@color/colorWhite"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <Button
+            android:background="@drawable/pressbutton"
+            android:id="@+id/pressbutton3"
+            android:layout_weight="1"
+            android:text="我的视频"
+            android:textColor="@color/colorWhite"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+   <FrameLayout
+       android:id="@+id/personselect"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <ImageView
+           android:id="@+id/photo_main"
+           android:layout_gravity="center"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent" />
+       <android.support.design.widget.FloatingActionButton
+           android:id="@+id/floatButton"
+           android:layout_gravity="bottom|end"
+           android:layout_margin="16dp"
+           android:src="@drawable/xuanfu"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+
+   </FrameLayout>
+
+
+</LinearLayout>
